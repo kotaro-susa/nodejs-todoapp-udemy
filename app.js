@@ -13,8 +13,8 @@ app.use("/api/v1/tasks", taskRoute);
 // データベースと接続
 const start = async function () {
   try {
-    await connectDB(process.env.MONGO_URL);
-    app.listen(PORT, function () {
+    await connectDB(process.env.MONGO_RENDER_URL || process.env.MONGO_URL);
+    app.listen(process.env.PORT||PORT, function () {
       console.log("サーバーが起動しました");
     });
   } catch (err) {
